@@ -1,0 +1,16 @@
+name: "libc functional test"
+author: "i.pear@outlook.com"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout workflow
+      run: git clone https://github.com/unikraft/test-workflows -b unikraft_libc-test ../.tests
+      shell: bash
+    - name: Run workflow
+      run: cd ../.tests && ./run_tests.sh ${{ github.event.pull_request.base.sha }}
+      shell: bash
+
+branding:
+  icon: "mic"
+  color: "blue"
